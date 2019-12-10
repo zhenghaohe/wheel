@@ -1,4 +1,9 @@
 import React from 'react'
+import './icons/weChat.svg'
+import './icons/reddit.svg'
+import './icons/spotify.svg'
+import './icons/youtube.svg'
+
 
 interface IconProps {
   name: String;
@@ -6,7 +11,9 @@ interface IconProps {
 
 const Icon: React.FunctionComponent<IconProps> = ({name}) => {
   return (
-    <span>{name}</span>
+    <span><svg>
+      <use xlinkHref={`#${name}`}></use>
+    </svg></span>
   )
 }
 
