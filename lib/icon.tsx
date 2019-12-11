@@ -4,15 +4,15 @@ import './icons/reddit.svg'
 import './icons/spotify.svg'
 import './icons/youtube.svg'
 import './icon.scss'
+import classes from './helpers/classes';
 
-
-interface IconProps {
-  name: String;
+interface IconProps extends React.SVGAttributes<SVGElement>{
+  name: string;
 }
 
-const Icon: React.FunctionComponent<IconProps> = ({name}) => {
+const Icon: React.FunctionComponent<IconProps> = ({className, name, ...restProps}) => {
   return (
-    <svg className='hui-icon'>
+    <svg className={classes(className, 'hui-icon')} {...restProps}>
       <use xlinkHref={`#${name}`}/>
     </svg>
   )
