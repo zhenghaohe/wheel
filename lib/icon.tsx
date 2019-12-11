@@ -3,6 +3,7 @@ import './icons/weChat.svg'
 import './icons/reddit.svg'
 import './icons/spotify.svg'
 import './icons/youtube.svg'
+import './icon.scss'
 
 
 interface IconProps {
@@ -11,11 +12,11 @@ interface IconProps {
 
 const Icon: React.FunctionComponent<IconProps> = ({name}) => {
   return (
-    <span><svg>
-      <use xlinkHref={`#${name}`}></use>
-    </svg></span>
+    <svg className='hui-icon'>
+      <use xlinkHref={`#${name}`}/>
+    </svg>
   )
-}
+};
 
 export default Icon;
 
