@@ -1,6 +1,6 @@
 {
   "name": "chakras-ui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/lib/index",
   "types": "dist/lib/index",
@@ -14,7 +14,9 @@
     "type": "git",
     "url": "git+https://github.com/FrankFang/frank-test-2.git"
   },
-  "files": ["/dist/**/*"],
+  "files": [
+    "/dist/**/*"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
