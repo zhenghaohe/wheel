@@ -1,11 +1,12 @@
 import React, { ReactElement } from "react";
+import ReactDOM from "react-dom";
 import "./dialog.scss";
 import { Icon } from "../index";
 import { scopedClassMake } from "../classes";
 
 interface Props {
   visible: boolean;
-  buttons: Array<ReactElement>;
+  buttons?: Array<ReactElement>;
   onClose: Function;
   closeOnClickMask?: boolean;
 }
@@ -33,9 +34,10 @@ const Dialog: React.FunctionComponent<Props> = props => {
         <header className={scopedClass("header")}>Dialog</header>
         <main className={scopedClass("main")}>{props.children}</main>
         <footer className={scopedClass("footer")}>
-          {props.buttons.map((button, index) =>
-            React.cloneElement(button, { key: index })
-          )}
+          {props.buttons &&
+            props.buttons.map((button, index) =>
+              React.cloneElement(button, { key: index })
+            )}
         </footer>
       </div>
     </>
@@ -44,6 +46,24 @@ const Dialog: React.FunctionComponent<Props> = props => {
 
 Dialog.defaultProps = {
   closeOnClickMask: false
+};
+
+export const alert = (content: string) => {
+  const component = (
+    <Dialog
+      onClose={() => {
+        ReactDOM.render(React.cloneElement(component, { visible: false }), div);
+        ReactDOM.unmountComponentAtNode(div);
+        div.remove();
+      }}
+      visible={true}
+    >
+      {content}
+    </Dialog>
+  );
+  const div = document.createElement("div");
+  document.body.append(div);
+  ReactDOM.render(component, div);
 };
 
 export default Dialog;
